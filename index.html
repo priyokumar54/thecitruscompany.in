@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Citrus Company — Skincare, Simply Better</title>
+<meta name="description" content="The Citrus Company — clean, modern skincare made for everyday radiance.">
+<style>
+:root{
+  --ink:#171714;
+  --muted:#686861;
+  --cream:#f7f5ef;
+  --white:#fff;
+  --line:#e7e4db;
+  --accent:#e7a52e;
+  --accent-dark:#c78313;
+  --green:#53664b;
+  --shadow:0 20px 60px rgba(20,20,15,.10);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(247,245,239,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:20px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.brand-logo{display:flex;align-items:center;height:52px}
+.brand-logo img{display:block;width:58px;height:58px;object-fit:contain}
+.checkout-logo{height:58px}
+.checkout-logo img{width:68px;height:68px}
+
+.nav-links{display:flex;gap:28px;font-size:14px}
+.nav-links a:hover{opacity:.6}
+.cart-btn{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;padding:11px 17px;display:flex;gap:8px;align-items:center}
+.cart-count{min-width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--ink);font-size:12px;font-weight:700}
+.hero{padding:100px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--green);font-weight:700}
+.hero h1{font-family:Georgia,serif;font-size:clamp(52px,7vw,94px);line-height:.94;font-weight:400;margin:18px 0 25px;letter-spacing:-.045em}
+.hero p{font-size:18px;color:var(--muted);max-width:560px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:15px 24px;font-weight:700;transition:.2s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);background:#2b2b25}
+.btn-light{background:#fff;border:1px solid var(--line)}
+.hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.hero-card{min-height:520px;border-radius:32px;background:linear-gradient(145deg,#f0d48a,#d9a33b 55%,#81906d);box-shadow:var(--shadow);display:flex;align-items:end;padding:30px;overflow:hidden;position:relative}
+.hero-card:after{content:"CITRUS";position:absolute;right:-35px;top:80px;font-size:90px;font-weight:900;color:rgba(255,255,255,.18);transform:rotate(90deg)}
+.hero-note{background:rgba(255,255,255,.9);padding:18px 20px;border-radius:18px;position:relative;z-index:1}
+.ticker{border-block:1px solid var(--line);padding:15px 0;overflow:hidden;white-space:nowrap;background:#fff}
+.ticker span{margin-right:45px;text-transform:uppercase;letter-spacing:.15em;font-size:11px;font-weight:700}
+.section{padding:90px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
+.section h2{font-family:Georgia,serif;font-size:48px;font-weight:400;margin:0;letter-spacing:-.03em}
+.section-head p{max-width:470px;color:var(--muted);margin:0}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.product{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.product-image{aspect-ratio:1/1;background:#eee;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:cover}
+.placeholder{color:#888;font-size:13px;text-align:center;padding:30px}
+.product-body{padding:22px}
+.product-body h3{font-family:Georgia,serif;font-size:27px;font-weight:400;margin:0 0 7px}
+.product-body p{color:var(--muted);font-size:14px;min-height:44px}
+.price-row{display:flex;align-items:center;justify-content:space-between;margin-top:20px;gap:12px}
+.price{font-weight:800;font-size:18px}
+.small-btn{border:1px solid var(--ink);background:#fff;border-radius:999px;padding:10px 15px;font-weight:700}
+.small-btn:hover{background:var(--ink);color:#fff}
+.story{background:#fff}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.story h2{margin-bottom:20px}
+.story p{color:var(--muted);font-size:17px}
+.story-box{min-height:430px;border-radius:30px;background:linear-gradient(135deg,#f1d67f,#e7aa35,#66775e);display:grid;place-items:center;color:#fff;font-size:42px;font-family:Georgia,serif}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature{padding:28px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.feature strong{display:block;margin-bottom:9px;font-size:18px}
+.feature p{margin:0;color:var(--muted);font-size:14px}
+.detail{background:#f1eee5}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.detail:nth-of-type(even){background:#fff}
+.detail-img{aspect-ratio:1/1;border-radius:30px;overflow:hidden;background:#e8e3d7}
+.detail-img img{width:100%;height:100%;object-fit:cover}
+.detail h2{font-family:Georgia,serif;font-size:52px;font-weight:400;margin:10px 0 15px}
+.detail p{color:var(--muted);font-size:17px}
+.detail ul{padding-left:20px;color:var(--muted)}
+.contact{background:var(--ink);color:#fff}
+.contact p{color:#c7c7bf}
+.contact .btn-light{color:var(--ink)}
+footer{padding:28px 0;background:#11110f;color:#aaa;font-size:13px}
+.footer-row{display:flex;justify-content:space-between;gap:20px}
+
+/* Cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:90;opacity:0;visibility:hidden;transition:.25s}
+.overlay.open{opacity:1;visibility:visible}
+.drawer{position:absolute;right:0;top:0;height:100%;width:min(450px,94vw);background:#fff;padding:25px;display:flex;flex-direction:column;transform:translateX(100%);transition:.3s}
+.overlay.open .drawer{transform:translateX(0)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}
+.close{border:0;background:none;font-size:28px}
+.cart-items{flex:1;overflow:auto;padding:15px 0}
+.cart-item{display:grid;grid-template-columns:70px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cart-item-img{width:70px;height:70px;border-radius:12px;overflow:hidden;background:#eee}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item h4{margin:0 0 5px}
+.cart-item small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty button{width:26px;height:26px;border:1px solid var(--line);background:#fff;border-radius:50%}
+.remove{border:0;background:none;color:#a33;font-size:12px;margin-top:8px}
+.cart-footer{border-top:1px solid var(--line);padding-top:18px}
+.total-row{display:flex;justify-content:space-between;font-weight:800;font-size:20px;margin-bottom:15px}
+.full{width:100%}
+.empty{padding:50px 10px;text-align:center;color:var(--muted)}
+
+/* Checkout */
+.checkout-overlay{position:fixed;inset:0;background:var(--cream);z-index:100;overflow:auto;display:none}
+.checkout-overlay.open{display:block}
+.checkout-wrap{width:min(1100px,92%);margin:0 auto;padding:28px 0 70px}
+.checkout-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:35px}
+.checkout-top .logo{font-size:18px}
+.back-cart{border:1px solid var(--ink);background:#fff;border-radius:999px;padding:10px 16px;font-weight:700}
+.checkout-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:30px}
+.checkout-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}
+.checkout-card h2{font-family:Georgia,serif;font-weight:400;font-size:38px;margin:0 0 25px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full-field{grid-column:1/-1}
+.field label{font-size:13px;font-weight:700}
+.field input,.field textarea,.field select{width:100%;border:1px solid #dcd9d0;border-radius:12px;padding:13px 14px;background:#fff;outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ink)}
+.field textarea{min-height:100px;resize:vertical}
+.error{color:#a33;font-size:12px;min-height:14px}
+.summary-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.summary-item img{width:58px;height:58px;border-radius:10px;object-fit:cover;background:#eee}
+.summary-info{flex:1}
+.summary-info strong{display:block}
+.summary-info small{color:var(--muted)}
+.summary-price{font-weight:700}
+.summary-lines{margin-top:15px}
+.summary-line{display:flex;justify-content:space-between;padding:8px 0;color:var(--muted)}
+.summary-line.final{color:var(--ink);font-weight:800;font-size:19px;border-top:1px solid var(--line);margin-top:8px;padding-top:16px}
+.secure{margin-top:18px;background:#f4f2eb;border-radius:14px;padding:13px;font-size:12px;color:var(--muted)}
+.checkout-note{font-size:12px;color:var(--muted);margin:12px 0 0}
+.success{display:none;text-align:center;padding:50px 20px}
+.success.show{display:block}
+.success-icon{font-size:50px}
+.order-id{font-weight:800}
+.hide{display:none!important}
+
+@media(max-width:850px){
+  .nav-links{display:none}
+  .hero-grid,.story-grid,.detail-grid,.checkout-grid{grid-template-columns:1fr}
+  .hero{padding:65px 0}
+  .hero-card{min-height:390px}
+  .products,.features{grid-template-columns:1fr}
+  .section{padding:65px 0}
+  .section h2,.detail h2{font-size:40px}
+  .section-head{display:block}
+  .section-head p{margin-top:12px}
+}
+@media(max-width:600px){
+  .form-grid{grid-template-columns:1fr}
+  .field.full-field{grid-column:auto}
+  .checkout-card{padding:20px}
+  .hero h1{font-size:54px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand-logo" href="#"><img src="citrus-logo.png" alt="The Citrus Company"></a>
+    <div class="nav-links">
+      <a href="#shop">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="#why">Why Citrus</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="cart-btn" onclick="openCart()">Cart <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</nav>
+
+<main id="home">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Fresh skincare. Everyday glow.</div>
+      <h1>Good skin,<br>naturally.</h1>
+      <p>Thoughtfully made skincare with a fresh, uncomplicated approach. Clean-looking formulas, effortless routines and a little citrus energy.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#shop">Explore Products</a>
+        <a class="btn btn-light" href="#story">Discover Citrus</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-note"><strong>Simple routine. Fresh results.</strong><br><span style="color:#686861">Face Wash · Serum · Sunscreen</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker"><div class="container"><span>Fresh</span><span>Simple</span><span>Everyday</span><span>Thoughtful</span><span>The Citrus Company</span></div></div>
+
+<section class="section" id="shop">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">The collection</div><h2>Your everyday essentials.</h2></div>
+      <p>A focused routine with three essentials designed to work beautifully together.</p>
+    </div>
+    <div class="products" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="section story" id="story">
+  <div class="container story-grid">
+    <div><div class="eyebrow">Our story</div><h2>Skincare without the clutter.</h2>
+      <p>The Citrus Company is built around a simple idea: your daily skincare routine should feel good, look beautiful and be easy to understand.</p>
+      <p>We focus on a small collection of everyday essentials instead of an overwhelming shelf full of products.</p>
+    </div>
+    <div class="story-box">Fresh skin.<br>Fresh start.</div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">Why Citrus</div><h2>Less noise. More routine.</h2></div></div>
+    <div class="features">
+      <div class="feature"><strong>Simple routine</strong><p>Three essentials that fit naturally into your everyday skincare ritual.</p></div>
+      <div class="feature"><strong>Fresh aesthetic</strong><p>Minimal, modern and designed to make your shelf feel as good as your skin.</p></div>
+      <div class="feature"><strong>Made for everyday</strong><p>Practical skincare you can consistently use, morning and night.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section detail" id="face-wash">
+  <div class="container detail-grid">
+    <div class="detail-img"><img src="face-wash.png" alt="The Citrus Company Face Wash" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Upload face-wash.png to your GitHub repository</div>'"></div>
+    <div><div class="eyebrow">01 · Cleanse</div><h2>Face Wash</h2><p>A fresh first step for your everyday routine.</p><ul><li>Gentle daily cleansing</li><li>Fresh, clean skin feel</li><li>Designed for simple routines</li></ul><button class="btn btn-primary" onclick="addToCart('face-wash')">Add to Cart · ₹399</button></div>
+  </div>
+</section>
+
+<section class="section detail" id="face-serum">
+  <div class="container detail-grid">
+    <div class="detail-img"><img src="face-serum.png" alt="The Citrus Company Face Serum" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Upload face-serum.png to your GitHub repository</div>'"></div>
+    <div><div class="eyebrow">02 · Treat</div><h2>Face Serum</h2><p>A lightweight everyday serum for a fresh, healthy-looking glow.</p><ul><li>Lightweight texture</li><li>Easy to layer</li><li>Made for daily use</li></ul><button class="btn btn-primary" onclick="addToCart('face-serum')">Add to Cart · ₹599</button></div>
+  </div>
+</section>
+
+<section class="section detail" id="sunscreen">
+  <div class="container detail-grid">
+    <div class="detail-img"><img src="sunscreen.png" alt="The Citrus Company Sunscreen" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Upload sunscreen.png to your GitHub repository</div>'"></div>
+    <div><div class="eyebrow">03 · Protect</div><h2>Sunscreen</h2><p>Your everyday final step for daytime skincare.</p><ul><li>Designed for daily daytime use</li><li>Comfortable everyday finish</li><li>Easy final step in your routine</li></ul><button class="btn btn-primary" onclick="addToCart('sunscreen')">Add to Cart · ₹499</button></div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="eyebrow">Contact</div><h2>Let's talk Citrus.</h2>
+    <p>Questions about products, orders or collaborations?</p>
+    <a class="btn btn-light" href="mailto:hello@thecitruscompany.in">hello@thecitruscompany.in</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="container footer-row"><span>© 2026 The Citrus Company</span><span>Made for everyday radiance.</span></div></footer>
+
+<!-- CART -->
+<div class="overlay" id="cartOverlay" onclick="closeCartIfOutside(event)">
+  <aside class="drawer">
+    <div class="drawer-head"><h2 style="margin:0;font-family:Georgia,serif;font-weight:400">Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="total-row"><span>Total</span><span id="cartTotal">₹0</span></div>
+      <button class="btn btn-primary full" onclick="startCheckout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+</div>
+
+<!-- CHECKOUT -->
+<div class="checkout-overlay" id="checkoutOverlay">
+  <div class="checkout-wrap">
+    <div class="checkout-top">
+      <a class="brand-logo checkout-logo" href="#" onclick="closeCheckout();return false"><img src="citrus-logo.png" alt="The Citrus Company"></a>
+      <button class="back-cart" onclick="backToCart()">← Back to Cart</button>
+    </div>
+
+    <div id="checkoutMain" class="checkout-grid">
+      <div class="checkout-card">
+        <div class="eyebrow">Secure checkout</div>
+        <h2>Delivery details</h2>
+        <form id="checkoutForm" onsubmit="submitCheckout(event)">
+          <div class="form-grid">
+            <div class="field full-field">
+              <label for="name">Full name *</label>
+              <input id="name" name="name" autocomplete="name" required>
+              <div class="error" id="nameError"></div>
+            </div>
+            <div class="field">
+              <label for="phone">Mobile number *</label>
+              <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" required>
+              <div class="error" id="phoneError"></div>
+            </div>
+            <div class="field">
+              <label for="email">Email address *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <div class="error" id="emailError"></div>
+            </div>
+            <div class="field full-field">
+              <label for="address">Full address *</label>
+              <textarea id="address" name="address" autocomplete="street-address" required></textarea>
+              <div class="error" id="addressError"></div>
+            </div>
+            <div class="field">
+              <label for="city">City *</label>
+              <input id="city" name="city" required>
+              <div class="error" id="cityError"></div>
+            </div>
+            <div class="field">
+              <label for="state">State *</label>
+              <select id="state" name="state" required>
+                <option value="">Select state</option>
+                <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Delhi</option><option>Jammu & Kashmir</option><option>Ladakh</option><option>Puducherry</option>
+              </select>
+              <div class="error" id="stateError"></div>
+            </div>
+            <div class="field">
+              <label for="pin">PIN code *</label>
+              <input id="pin" name="pin" inputmode="numeric" maxlength="6" required>
+              <div class="error" id="pinError"></div>
+            </div>
+          </div>
+          <button class="btn btn-primary full" style="margin-top:20px" type="submit">Continue to Payment</button>
+          <p class="checkout-note">Your payment gateway will be connected to this checkout in the next integration step. Do not enter card or UPI credentials on this page yet.</p>
+        </form>
+      </div>
+
+      <div class="checkout-card">
+        <div class="eyebrow">Your order</div>
+        <h2 style="font-size:32px">Order summary</h2>
+        <div id="checkoutSummary"></div>
+        <div class="summary-lines">
+          <div class="summary-line"><span>Subtotal</span><strong id="summarySubtotal">₹0</strong></div>
+          <div class="summary-line"><span>Shipping</span><strong id="summaryShipping">₹0</strong></div>
+          <div class="summary-line final"><span>Total</span><strong id="summaryTotal">₹0</strong></div>
+        </div>
+        <div class="secure">🔒 Payment details will be handled by the payment gateway once Razorpay/UPI integration is connected.</div>
+      </div>
+    </div>
+
+    <div id="checkoutSuccess" class="checkout-card success">
+      <div class="success-icon">✓</div>
+      <div class="eyebrow">Order created</div>
+      <h2>Thank you for your order.</h2>
+      <p>Your order information has been captured successfully.</p>
+      <p class="order-id" id="orderId"></p>
+      <button class="btn btn-primary" onclick="closeCheckout()">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const SHIPPING_FEE = 0; // Set your real shipping charge here before launch.
+
+const products = {
+  "face-wash": {name:"Face Wash", price:399, image:"face-wash.png"},
+  "face-serum": {name:"Face Serum", price:599, image:"face-serum.png"},
+  "sunscreen": {name:"Sunscreen", price:499, image:"sunscreen.png"}
+};
+
+let cart = JSON.parse(localStorage.getItem("citrusCart") || "{}");
+
+function money(n){ return "₹" + Number(n).toLocaleString("en-IN"); }
+
+function saveCart(){
+  localStorage.setItem("citrusCart", JSON.stringify(cart));
+  renderCart();
+  renderCheckout();
+}
+
+function cartEntries(){
+  return Object.entries(cart).filter(([id,q]) => products[id] && q > 0);
+}
+
+function cartQty(){
+  return cartEntries().reduce((sum,[id,q]) => sum + q, 0);
+}
+
+function subtotal(){
+  return cartEntries().reduce((sum,[id,q]) => sum + products[id].price*q, 0);
+}
+
+function renderProductGrid(){
+  const grid=document.getElementById("productGrid");
+  grid.innerHTML=Object.entries(products).map(([id,p])=>`
+    <article class="product">
+      <div class="product-image">
+        <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Upload ${p.image} to your GitHub repository</div>'">
+      </div>
+      <div class="product-body">
+        <h3>${p.name}</h3>
+        <p>${id==="face-wash"?"A fresh everyday cleansing essential.":id==="face-serum"?"A lightweight everyday serum for a healthy-looking glow.":"An everyday daytime skincare essential."}</p>
+        <div class="price-row">
+          <span class="price">${money(p.price)}</span>
+          <button class="small-btn" onclick="addToCart('${id}')">Add to Cart</button>
+        </div>
+      </div>
+    </article>`).join("");
+}
+
+function addToCart(id){
+  cart[id]=(cart[id]||0)+1;
+  saveCart();
+  openCart();
+}
+
+function changeQty(id,delta){
+  cart[id]=(cart[id]||0)+delta;
+  if(cart[id]<=0) delete cart[id];
+  saveCart();
+}
+
+function removeItem(id){
+  delete cart[id];
+  saveCart();
+}
+
+function renderCart(){
+  document.getElementById("cartCount").textContent=cartQty();
+  const box=document.getElementById("cartItems");
+  const entries=cartEntries();
+  if(!entries.length){
+    box.innerHTML='<div class="empty">Your cart is empty.<br><br><a href="#shop" onclick="closeCart()" class="btn btn-primary">Shop Products</a></div>';
+  }else{
+    box.innerHTML=entries.map(([id,q])=>{
+      const p=products[id];
+      return `<div class="cart-item">
+        <div class="cart-item-img"><img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'"></div>
+        <div>
+          <h4>${p.name}</h4>
+          <small>${money(p.price)} each</small>
+          <div class="qty">
+            <button onclick="changeQty('${id}',-1)">−</button><strong>${q}</strong><button onclick="changeQty('${id}',1)">+</button>
+          </div>
+          <button class="remove" onclick="removeItem('${id}')">Remove</button>
+        </div>
+        <strong>${money(p.price*q)}</strong>
+      </div>`;
+    }).join("");
+  }
+  document.getElementById("cartTotal").textContent=money(subtotal()+SHIPPING_FEE);
+}
+
+function openCart(){
+  document.getElementById("cartOverlay").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeCart(){
+  document.getElementById("cartOverlay").classList.remove("open");
+  document.body.style.overflow="";
+}
+function closeCartIfOutside(e){
+  if(e.target.id==="cartOverlay") closeCart();
+}
+
+function startCheckout(){
+  if(!cartEntries().length){
+    alert("Your cart is empty.");
+    return;
+  }
+  closeCart();
+  document.getElementById("checkoutOverlay").classList.add("open");
+  document.body.style.overflow="hidden";
+  document.getElementById("checkoutMain").classList.remove("hide");
+  document.getElementById("checkoutSuccess").classList.remove("show");
+  renderCheckout();
+  window.scrollTo(0,0);
+}
+
+function closeCheckout(){
+  document.getElementById("checkoutOverlay").classList.remove("open");
+  document.body.style.overflow="";
+}
+function backToCart(){
+  closeCheckout();
+  openCart();
+}
+
+function renderCheckout(){
+  const box=document.getElementById("checkoutSummary");
+  box.innerHTML=cartEntries().map(([id,q])=>{
+    const p=products[id];
+    return `<div class="summary-item">
+      <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'">
+      <div class="summary-info"><strong>${p.name}</strong><small>Qty: ${q}</small></div>
+      <div class="summary-price">${money(p.price*q)}</div>
+    </div>`;
+  }).join("");
+  document.getElementById("summarySubtotal").textContent=money(subtotal());
+  document.getElementById("summaryShipping").textContent=SHIPPING_FEE===0?"Free":money(SHIPPING_FEE);
+  document.getElementById("summaryTotal").textContent=money(subtotal()+SHIPPING_FEE);
+}
+
+function clearErrors(){
+  document.querySelectorAll(".error").forEach(e=>e.textContent="");
+}
+function submitCheckout(e){
+  e.preventDefault();
+  clearErrors();
+  let ok=true;
+  const name=document.getElementById("name").value.trim();
+  const phone=document.getElementById("phone").value.replace(/\D/g,"");
+  const email=document.getElementById("email").value.trim();
+  const address=document.getElementById("address").value.trim();
+  const city=document.getElementById("city").value.trim();
+  const state=document.getElementById("state").value;
+  const pin=document.getElementById("pin").value.replace(/\D/g,"");
+
+  if(name.length<2){document.getElementById("nameError").textContent="Please enter your full name.";ok=false;}
+  if(!/^[6-9]\d{9}$/.test(phone)){document.getElementById("phoneError").textContent="Enter a valid 10-digit Indian mobile number.";ok=false;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById("emailError").textContent="Enter a valid email address.";ok=false;}
+  if(address.length<8){document.getElementById("addressError").textContent="Please enter your complete address.";ok=false;}
+  if(city.length<2){document.getElementById("cityError").textContent="Please enter your city.";ok=false;}
+  if(!state){document.getElementById("stateError").textContent="Please select your state.";ok=false;}
+  if(!/^\d{6}$/.test(pin)){document.getElementById("pinError").textContent="Enter a valid 6-digit PIN code.";ok=false;}
+  if(!ok)return;
+
+  // Temporary development order confirmation.
+  // Replace this block with Razorpay/server-side order creation after gateway setup.
+  const orderId="CITRUS-"+Date.now().toString().slice(-8);
+  document.getElementById("checkoutMain").classList.add("hide");
+  document.getElementById("checkoutSuccess").classList.add("show");
+  document.getElementById("orderId").textContent="Order ID: "+orderId;
+}
+
+renderProductGrid();
+renderCart();
+</script>
+</body>
+</html>
